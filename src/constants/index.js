@@ -39,7 +39,7 @@ export const SEARCH_FAIL="SEARCH_FAIL"
 export const SEARCH_SUCCESS="SEARCH_SUCCESS"
 
 /**
- * GET POST LIST by create_date,popular(view cnt),favorite(like cnt),tag,category
+ * GET POST LIST by create_date,popular(view cnt),favorite(like cnt),tag,category,user
  *  */
 export const REQUEST_POSTS_BY_DATE="REQUEST_POSTS_BY_DATE"
 export const POSTS_BY_DATE_CANCEL="POSTS_BY_DATE_CANCEL"
@@ -65,6 +65,11 @@ export const REQUEST_POSTS_BY_CATEGORY="REQUEST_POSTS_BY_CATEGORY"
 export const POSTS_BY_CATEGORY_CANCEL="POSTS_BY_CATEGORY_CANCEL"
 export const POSTS_BY_CATEGORY_FAIL="POSTS_BY_CATEGORY_FAIL"
 export const POSTS_BY_CATEGORY_SUCCESS="POSTS_BY_CATEGORY_SUCCESS"
+
+export const REQUEST_POSTS_BY_USER="REQUEST_POSTS_BY_USER"
+export const POSTS_BY_USER_CANCEL="POSTS_BY_USER_CANCEL"
+export const POSTS_BY_USER_FAIL="POSTS_BY_USER_FAIL"
+export const POSTS_BY_USER_SUCCESS="POSTS_BY_USER_SUCCESS"
 
 /**
  * CURD POST 
