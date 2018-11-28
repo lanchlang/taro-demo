@@ -1,11 +1,11 @@
-import BASE_URL from '../constants/common'
+import {BASE_URL} from '../constants/common'
 //利用Base_Url 生成url
 export function generateUrl(url){
     return BASE_URL+url
 }
 //TODO:
 export function getJwtToken(){
-    return ""
+    return {user_token:""}
 }
 //TODO:
 export function saveJwtToken(jwtToken){

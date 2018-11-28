@@ -19,11 +19,14 @@ function* createCommentAsync(action){
     let comment=action.payload 
     try{
        yield put(createCommentActionCreator.createPendingAction())
-       const result=yield call(createComment,comment)
-       yield put(createCommentActionCreator.createSuccessAction(result))
+       const response=yield call(createComment,comment)
+       if(response.statusCode>=300){
+          yield put(createCommentActionCreator.createFailAction(response.data))
+       }else{
+          yield put(createCommentActionCreator.createSuccessAction(response.data))
+       }
     }catch(error) {
-        console.log(error)
-        yield put(createCommentActionCreator.createFailAction(error))
+        yield put(createCommentActionCreator.createFailAction({"error":"发生网络错误"}))
     }
 } 
 
@@ -35,11 +38,14 @@ function* deleteCommentAsync(action){
     let {id}=action.payload 
     try{
        yield put(deleteCommentActionCreator.createPendingAction())
-       const result=yield call(deleteCommentById,id)
-       yield put(deleteCommentActionCreator.createSuccessAction(result))
+       const response=yield call(deleteCommentById,id)
+       if(response.statusCode>=300){
+        yield put(deleteCommentActionCreator.createFailAction(response.data))
+       }else{
+        yield put(deleteCommentActionCreator.createSuccessAction(response.data))
+       }
     }catch(error) {
-        console.log(error)
-        yield put(deleteCommentActionCreator.createFailAction(error))
+        yield put(deleteCommentActionCreator.createFailAction({"error":"发生网络错误"}))
     }
 } 
 export function* watchDeleteComment(){
@@ -51,11 +57,14 @@ function* getCommentsByPostAsync(action){
     let {postId,lastId}=action.payload
     try{
         yield put(requestCommentsByPostActionCreator.createPendingAction())
-        const comments=yield call(getCommentsByPost,postId,lastId)
-        yield put(requestCommentsByPostActionCreator.createSuccessAction(comments))
+        const response=yield call(getCommentsByPost,postId,lastId)
+        if(response.statusCode>=300){
+            yield put(requestCommentsByPostActionCreator.createFailAction(response.data))
+        }else{
+            yield put(requestCommentsByPostActionCreator.createSuccessAction(response.data))
+        }
      }catch(error) {
-         console.log(error)
-         yield put(requestCommentsByPostActionCreator.createFailAction(error))
+         yield put(requestCommentsByPostActionCreator.createFailAction({"error":"发生网络错误"}))
      }
 } 
 export function* watchGetCommentsByPost(){

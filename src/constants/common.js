@@ -1,3 +1,2 @@
-const BASE_URL="https://www.hotmm8.com/api/v1"
-
-export default BASE_URL
+export const BASE_URL="http://localhost:8080/api/v1"
+export const JWT_TOKEN="user_token"

@@ -1,11 +1,14 @@
 import Taro from '@tarojs/taro'
 import {generateUrl,getJwtToken} from '../util/common'
+
+
 //通过id删除comment
 export function deleteCommentById(id){
     return Taro.request({
         url: generateUrl("/comments/"+id),
+        method:"DELETE",
         header: {
-          'jwt_token': getJwtToken()
+            ...getJwtToken()
         }
       })
 }
@@ -15,7 +18,7 @@ export function createComment(comment){
         url: generateUrl("/comments/"),
         data: {...comment},
         header: {
-          'jwt_token': getJwtToken(),
+            ...getJwtToken()
         },
         method:"POST",
       })
@@ -29,7 +32,7 @@ export function getCommentsByPost(postId,lastId){
         },
         method:"GET",
         header: {
-          'jwt_token': getJwtToken(),
+            ...getJwtToken()
         }
     })
 }
