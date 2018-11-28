@@ -1,114 +1,136 @@
 /**
- *登录/登出/注册
+ * 请求描述
+ *  */
+
+export class Request{
+    constructor(requestDescription){
+       this.requestDescription=requestDescription
+       this.requestPendingDescription=requestDescription+"_PENDING"
+       this.cancelRequestDescription=requestDescription+"_CANCEL"
+       this.successRequestDescription=requestDescription+"_SUCCESS"
+       this.failRequestDescription=requestDescription+"_FAIL"
+    }
+    request(){
+        return this.requestDescription;
+    }
+    pending(){
+        return this.requestPendingDescription
+    }
+    cancel(){
+        return this.cancelRequestDescription
+    }
+    success(){
+        return this.successRequestDescription
+    }
+    fail(){
+        return this.failRequestDescription
+    }
+}
+
+/**
+ *登出
  **/
-export const REQUEST_LOGIN="REQUEST_LOGIN"
-export const LOGIN_CANCEL="LOGIN_CANCEL"
-export const LOGIN_SUCCESS="LOGIN_SUCCESS"
-export const LOGIN_FAIL="LOGIN_FAIL"
-export const REQUEST_LOGOUT="REQUEST_LOGOUT"
-export const LOGOUT_CANCEL="LOGOUT_CANCEL"
-export const LOGOUT_SUCCESS="LOGOUT_SUCCESS"
-export const LOGOUT_FAIL="LOGOUT_FAIL"
-export const REQUEST_REGISTER="REQUEST_REGISTER"
-export const REGISTER_CANCEL="LOGIN_CANCEL"
-export const REGISTER_SUCCESS="REGISTER_SUCCESS"
-export const REGISTER_FAIL="REGISTER_FAIL"
+
+export const REQUEST_LOGOUT=new Request("REQUEST_LOGOUT")
+
+
+/**
+ * 检查用户名/邮箱/电话是否存在
+ *  */
+export const REQUEST_USERNAME_EXIST=new Request("REQUEST_USERNAME_EXIST")
+
+
+export const REQUEST_EMAIL_EXIST=new Request("REQUEST_EMAIL_EXIST")
+
+
+export const REQUEST_PHONE_EXIST=new Request("REQUEST_PHONE_EXIST")
+
+/**
+ * 登录 用户名/邮箱/电话/验证码
+ */
+export const REQUEST_LOGIN_WITH_USERNAME=new Request("REQUEST_LOGIN_WITH_USERNAME")
+export const REQUEST_LOGIN_WITH_EMAIL=new Request("REQUEST_LOGIN_WITH_EMAIL")
+export const REQUEST_LOGIN_WITH_PHONE=new Request("REQUEST_LOGIN_WITH_PHONE")
+export const REQUEST_LOGIN_WITH_CAPTCHA=new Request("REQUEST_LOGIN_WITH_CAPTCHA")
+
+/**
+ * 请求重置密码 使用邮箱/电话
+ */
+export const REQUEST_RESET_PASSWORD_WITH_EMAIL=new Request("REQUEST_REQUEST_RESET_PASSWORD_WITH_EMAIL")
+export const REQUEST_RESET_PASSWORD_WITH_PHONE=new Request("REQUEST_REQUEST_RESET_PASSWORD_WITH_PHONE")
+/**
+ * 重置密码
+ */
+export const REQUEST_RESET_PASSWORD=new Request("REQUEST_RESET_PASSWORD")
+/**
+ * 请求图形验证码
+ */
+export const REQUEST_PROVIDE_CAPTCHA=new Request("REQUEST_PROVIDE_CAPTCHA")
+/**
+ * 检测图形验证码
+ */
+export const REQUEST_VERIFY_CAPTCHA=new Request("REQUEST_VERIFY_CAPTCHA")
+/**
+ * 发送手机验证码
+ */
+export const REQUEST_SEND_CAPTCHA_TO_PHONE=new Request("REQUEST_SEND_CAPTCHA_TO_PHONE")
+/**
+ * 检测手机验证码
+ */
+export const REQUEST_VERIFY_PHONE_CAPTCHA=new Request("REQUEST_VERIFY_PHONE_CAPTCHA")
 
 /**
  * sync data
  *  */
-export const REQUEST_SYNC="REQUEST_SYNC"
-export const SYNC_FAIL="SYNC_FAIL"
-export const SYNC_SUCCESS="SYNC_SUCCESS"
+export const REQUEST_SYNC=new Request("REQUEST_SYNC")
+
 /**
  * favor/unfavor
  **/
-export const REQUEST_FAVOR="REQUEST_LOGIN"
-export const FAVOR_FAIL="FAVOR_FAIL"
-export const FAVOR_SUCCESS="FAVOR_SUCCESS"
-export const REQUEST_UNFAVOR="REQUEST_LOGOUT"
-export const UNFAVOR_FAIL="UNFAVOR_FAIL"
-export const UNFAVOR_SUCCESS="UNFAVOR_SUCCESS"
+export const REQUEST_FAVOR=new Request("REQUEST_FAVOR")
+
+export const REQUEST_UNFAVOR=new Request("REQUEST_UNFAVOR")
+
 
 /**
  * search
  **/
-export const REQUEST_SEARCH="REQUEST_SEARCH"
-export const SEARCH_CANCEL="SEARCH_CANCEL"
-export const SEARCH_FAIL="SEARCH_FAIL"
-export const SEARCH_SUCCESS="SEARCH_SUCCESS"
+export const REQUEST_SEARCH_BLOG=new Request("REQUEST_SEARCH_BLOG")
+
 
 /**
- * GET POST LIST by create_date,popular(view cnt),favorite(like cnt),tag,category,user
+ * GET BLOG LIST by create_date,popular(view cnt),favorite(like cnt),tag,category,user
  *  */
-export const REQUEST_POSTS_BY_DATE="REQUEST_POSTS_BY_DATE"
-export const POSTS_BY_DATE_CANCEL="POSTS_BY_DATE_CANCEL"
-export const POSTS_BY_DATE_FAIL="POSTS_BY_DATE_FAIL"
-export const POSTS_BY_DATE_SUCCESS="POSTS_BY_DATE_SUCCESS"
+export const REQUEST_BLOGS_BY_DATE=new Request("REQUEST_BLOGS_BY_DATE")
 
-export const REQUEST_POSTS_BY_POPULARITY="REQUEST_POSTS_BY_POPULARITY"
-export const POSTS_BY_POPULARITY_CANCEL="POSTS_BY_POPULARITY_CANCEL"
-export const POSTS_BY_POPULARITY_FAIL="POSTS_BY_POPULARITY_FAIL"
-export const POSTS_BY_POPULARITY_SUCCESS="POSTS_BY_POPULARITY_SUCCESS"
+export const REQUEST_BLOGS_BY_POPULARITY=new Request("REQUEST_BLOGS_BY_POPULARITY")
 
-export const REQUEST_POSTS_BY_FAVORITE="REQUEST_POSTS_BY_FAVORITE"
-export const POSTS_BY_FAVORITE_CANCEL="POSTS_BY_FAVORITE_CANCEL"
-export const POSTS_BY_FAVORITE_FAIL="POSTS_BY_FAVORITE_FAIL"
-export const POSTS_BY_FAVORITE_SUCCESS="POSTS_BY_FAVORITE_SUCCESS"
+export const REQUEST_BLOGS_BY_FAVORITE=new Request("REQUEST_BLOGS_BY_FAVORITE")
 
-export const REQUEST_POSTS_BY_TAG="REQUEST_POSTS_BY_TAG"
-export const POSTS_BY_TAG_CANCEL="POSTS_BY_TAG_CANCEL"
-export const POSTS_BY_TAG_FAIL="POSTS_BY_TAG_FAIL"
-export const POSTS_BY_TAG_SUCCESS="POSTS_BY_TAG_SUCCESS"
+export const REQUEST_BLOGS_BY_TAG=new Request("REQUEST_BLOGS_BY_TAG")
 
-export const REQUEST_POSTS_BY_CATEGORY="REQUEST_POSTS_BY_CATEGORY"
-export const POSTS_BY_CATEGORY_CANCEL="POSTS_BY_CATEGORY_CANCEL"
-export const POSTS_BY_CATEGORY_FAIL="POSTS_BY_CATEGORY_FAIL"
-export const POSTS_BY_CATEGORY_SUCCESS="POSTS_BY_CATEGORY_SUCCESS"
+export const REQUEST_BLOGS_BY_CATEGORY=new Request("REQUEST_BLOGS_BY_CATEGORY")
 
-export const REQUEST_POSTS_BY_USER="REQUEST_POSTS_BY_USER"
-export const POSTS_BY_USER_CANCEL="POSTS_BY_USER_CANCEL"
-export const POSTS_BY_USER_FAIL="POSTS_BY_USER_FAIL"
-export const POSTS_BY_USER_SUCCESS="POSTS_BY_USER_SUCCESS"
+export const REQUEST_BLOGS_BY_USER=new Request("REQUEST_BLOGS_BY_USER")
+
 
 /**
- * CURD POST 
+ * CURD BLOG 
  *  */
-export const REQUEST_CREATE_POST="REQUEST_CREATE_POST"
-export const CREATE_POST_CANCEL="CREATE_POST_CANCEL"
-export const CREATE_POST_FAIL="CREATE_POST_FAIL"
-export const CREATE_POST_SUCCESS="CREATE_POST_SUCCESS"
+export const REQUEST_CREATE_BLOG=new Request("REQUEST_CREATE_BLOG")
 
-export const REQUEST_UPDATE_POST="REQUEST_UPDATE_POST"
-export const UPDATE_POST_CANCEL="UPDATE_POST_CANCEL"
-export const UPDATE_POST_FAIL="UPDATE_POST_FAIL"
-export const UPDATE_POST_SUCCESS="UPDATE_POST_SUCCESS"
+export const REQUEST_UPDATE_BLOG=new Request("REQUEST_UPDATE_BLOG")
 
-export const REQUEST_DELETE_POST="REQUEST_DELETE_POST"
-export const DELETE_POST_CANCEL="DELETE_POST_CANCEL"
-export const DELETE_POST_FAIL="DELETE_POST_FAIL"
-export const DELETE_POST_SUCCESS="DELETE_POST_SUCCESS"
+export const REQUEST_DELETE_BLOG=new Request("REQUEST_DELETE_BLOG")
 
-export const REQUEST_GET_POST="REQUEST_GET_POST"
-export const GET_POST_CANCEL="GET_POST_CANCEL"
-export const GET_POST_FAIL="GET_POST_FAIL"
-export const GET_POST_SUCCESS="GET_POST_SUCCESS"
+export const REQUEST_GET_BLOG=new Request("REQUEST_GET_BLOG")
+
 
 /**
- * Create comment,delete comment, get comments by post 
+ * Create comment,delete comment, get comments by BLOG 
  *  */
+export const REQUEST_CREATE_COMMENT=new Request("REQUEST_CREATE_COMMENT")
 
-export const REQUEST_CREATE_COMMENT="REQUEST_CREATE_COMMENT"
-export const CREATE_COMMENT_CANCEL="CREATE_COMMENT_CANCEL"
-export const CREATE_COMMENT_FAIL="CREATE_COMMENT_FAIL"
-export const CREATE_COMMENT_SUCCESS="CREATE_COMMENT_SUCCESS"
+export const REQUEST_DELETE_COMMENT=new Request("REQUEST_DELETE_COMMENT")
 
-export const REQUEST_DELETE_COMMENT="REQUEST_DELETE_COMMENT"
-export const DELETE_COMMENT_CANCEL="DELETE_COMMENT_CANCEL"
-export const DELETE_COMMENT_FAIL="DELETE_COMMENT_FAIL"
-export const DELETE_COMMENT_SUCCESS="DELETE_COMMENT_SUCCESS"
-
-export const REQUEST_COMMENTS_BY_POST="REQUEST_COMMENTS_BY_POST"
-export const COMMENTS_BY_POST_CANCEL="COMMENTS_BY_POST_CANCEL"
-export const COMMENTS_BY_POST_FAIL="COMMENTS_BY_POST_FAIL"
-export const COMMENTS_BY_POST_SUCCESS="COMMENTS_BY_POST_SUCCESS"
+export const REQUEST_COMMENTS_BY_BLOG=new Request("REQUEST_COMMENTS_BY_BLOG")

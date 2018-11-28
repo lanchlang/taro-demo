@@ -3,7 +3,7 @@ import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
-
+import {deleteCommentActionCreator} from '../../actions/comment'
 import './index.css'
 
 
@@ -14,7 +14,8 @@ import './index.css'
     dispatch(add())
   },
   dec () {
-    dispatch(minus())
+    //dispatch(minus())
+    dispatch(deleteCommentActionCreator.createRequestAction({id:1}))
   },
   asyncAdd () {
     dispatch(asyncAdd())
