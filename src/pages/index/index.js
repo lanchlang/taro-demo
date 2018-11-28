@@ -3,7 +3,7 @@ import { View, Button, Text } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 
 import { add, minus, asyncAdd } from '../../actions/counter'
-import {deleteCommentActionCreator} from '../../actions/comment'
+import {deleteCommentActionCreator,requestCommentsByPostActionCreator} from '../../actions/comment'
 import './index.css'
 
 
@@ -18,7 +18,8 @@ import './index.css'
     dispatch(deleteCommentActionCreator.createRequestAction({id:1}))
   },
   asyncAdd () {
-    dispatch(asyncAdd())
+    //dispatch(asyncAdd())
+    dispatch(requestCommentsByPostActionCreator.createRequestAction({postId:1,lastId:11}))
   }
 }))
 class Index extends Component {

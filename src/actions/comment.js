@@ -1,5 +1,5 @@
 import {
-   REQUEST_COMMENTS_BY_POST,
+   REQUEST_COMMENTS_BY_BLOG,
    REQUEST_CREATE_COMMENT,
    REQUEST_DELETE_COMMENT,
 } from "../constants/index"
@@ -9,7 +9,7 @@ import ActionCreator from "./common"
  * @param {最末的commentID} lastId {post的ID}postId
  */
 
-export const requestCommentsByPostActionCreator=new ActionCreator(REQUEST_COMMENTS_BY_POST)
+export const requestCommentsByPostActionCreator=new ActionCreator(REQUEST_COMMENTS_BY_BLOG)
 
 //创建comment
 /**
