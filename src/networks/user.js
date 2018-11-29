@@ -236,6 +236,3 @@ export function verifyPhoneCaptcha(phone,captcha){
         }
     })
 }
-export function placeholder(){
-
-}

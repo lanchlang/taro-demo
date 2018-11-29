@@ -9,6 +9,7 @@ import {
     REQUEST_BLOGS_BY_TAG,
     REQUEST_BLOGS_BY_CATEGORY,
     REQUEST_BLOGS_BY_USER,
+    REQUEST_BLOGS_BY_IDS,
     REQUEST_CREATE_BLOG,
     REQUEST_UPDATE_BLOG,
     REQUEST_DELETE_BLOG,
@@ -72,6 +73,12 @@ export const getBlogsByCategoryActionCreator=new ActionCreator(REQUEST_BLOGS_BY_
 
 export const getBlogsByUserActionCreator=new ActionCreator(REQUEST_BLOGS_BY_USER)
 
+//按照ids获取blogs
+/**
+ * @param {ID列表}ids
+ */
+
+export const getBlogsByIdsActionCreator=new ActionCreator(REQUEST_BLOGS_BY_IDS)
 //创建blog
 /**
  * @param {blog内容}blog

@@ -113,6 +113,7 @@ export const REQUEST_BLOGS_BY_CATEGORY=new Request("REQUEST_BLOGS_BY_CATEGORY")
 
 export const REQUEST_BLOGS_BY_USER=new Request("REQUEST_BLOGS_BY_USER")
 
+export const REQUEST_BLOGS_BY_IDS=new Request("REQUEST_BLOGS_BY_IDS")
 
 /**
  * CURD BLOG 
