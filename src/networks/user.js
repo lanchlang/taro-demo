@@ -236,3 +236,18 @@ export function verifyPhoneCaptcha(phone,captcha){
         }
     })
 }
+
+//同步
+export function sync(params){
+    return Taro.request({
+        url: generateUrl("/sync"),
+        data: {
+           ...params
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}

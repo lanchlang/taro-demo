@@ -1,4 +1,4 @@
-import { put, takeEvery,call } from 'redux-saga/effects'
+import { put, call,takeLatest } from 'redux-saga/effects'
 import {
     REQUEST_FAVOR,
     REQUEST_UNFAVOR,
@@ -60,7 +60,7 @@ function* favorBlogAsync(action){
 } 
 
 export function* watchFavorBlog(){
-    yield takeEvery(REQUEST_FAVOR.request(), favorBlogAsync)
+    yield takeLatest(REQUEST_FAVOR.request(), favorBlogAsync)
 }
 //取消点赞
 function* unfavorBlogAsync(action){
@@ -78,7 +78,7 @@ function* unfavorBlogAsync(action){
     }
 } 
 export function* watchUnfavorBlog(){
-    yield takeEvery(REQUEST_UNFAVOR.request(), unfavorBlogAsync)
+    yield takeLatest(REQUEST_UNFAVOR.request(), unfavorBlogAsync)
 }
 
 //搜索blog
@@ -97,7 +97,7 @@ function* searchBlogAsync(action){
      }
 } 
 export function* watchSearchBlog(){
-    yield takeEvery(REQUEST_SEARCH_BLOG.request(), searchBlogAsync)
+    yield takeLatest(REQUEST_SEARCH_BLOG.request(), searchBlogAsync)
 }
 
 //根据日期获取blogs
@@ -116,7 +116,7 @@ function* getBlogsByDateAsync(action){
      }
 } 
 export function* watchGetBlogsByDate(){
-    yield takeEvery(REQUEST_BLOGS_BY_DATE.request(), getBlogsByDateAsync)
+    yield takeLatest(REQUEST_BLOGS_BY_DATE.request(), getBlogsByDateAsync)
 }
 //根据流行程度获取blogs
 function* getBlogsByPopularityAsync(action){
@@ -134,7 +134,7 @@ function* getBlogsByPopularityAsync(action){
      }
 } 
 export function* watchGetBlogsByPopularity(){
-    yield takeEvery(REQUEST_BLOGS_BY_POPULARITY.request(), getBlogsByPopularityAsync)
+    yield takeLatest(REQUEST_BLOGS_BY_POPULARITY.request(), getBlogsByPopularityAsync)
 }
 
 //根据最喜欢获取blogs
@@ -153,7 +153,7 @@ function* getBlogsByFavoriteAsync(action){
      }
 } 
 export function* watchGetBlogsByFavorite(){
-    yield takeEvery(REQUEST_BLOGS_BY_FAVORITE.request(), getBlogsByFavoriteAsync)
+    yield takeLatest(REQUEST_BLOGS_BY_FAVORITE.request(), getBlogsByFavoriteAsync)
 }
 
 //根据Tag获取blogs
@@ -172,7 +172,7 @@ function* getBlogsByTagAsync(action){
      }
 } 
 export function* watchGetBlogsByTag(){
-    yield takeEvery(REQUEST_BLOGS_BY_TAG.request(), getBlogsByTagAsync)
+    yield takeLatest(REQUEST_BLOGS_BY_TAG.request(), getBlogsByTagAsync)
 }
 
 //根据category获取blogs
@@ -191,7 +191,7 @@ function* getBlogsByCategoryAsync(action){
      }
 } 
 export function* watchGetBlogsByCategory(){
-    yield takeEvery(REQUEST_BLOGS_BY_CATEGORY.request(), getBlogsByCategoryAsync)
+    yield takeLatest(REQUEST_BLOGS_BY_CATEGORY.request(), getBlogsByCategoryAsync)
 }
 
 //根据user获取blogs
@@ -210,7 +210,7 @@ function* getBlogsByUserAsync(action){
      }
 } 
 export function* watchGetBlogsByUser(){
-    yield takeEvery(REQUEST_BLOGS_BY_USER.request(), getBlogsByUserAsync)
+    yield takeLatest(REQUEST_BLOGS_BY_USER.request(), getBlogsByUserAsync)
 }
 //根据id列表获取blogs
 function* getBlogsByIdsAsync(action){
@@ -228,7 +228,7 @@ function* getBlogsByIdsAsync(action){
      }
 } 
 export function* watchGetBlogsByIds(){
-    yield takeEvery(REQUEST_BLOGS_BY_IDS.request(), getBlogsByIdsAsync)
+    yield takeLatest(REQUEST_BLOGS_BY_IDS.request(), getBlogsByIdsAsync)
 }
 
 //创建blog
@@ -247,7 +247,7 @@ function* createBlogAsync(action){
      }
 } 
 export function* watchCreateBlog(){
-    yield takeEvery(REQUEST_CREATE_BLOG.request(), createBlogAsync)
+    yield takeLatest(REQUEST_CREATE_BLOG.request(), createBlogAsync)
 }
 
 //更新blog
@@ -266,7 +266,7 @@ function* updateBlogAsync(action){
      }
 } 
 export function* watchUpdateBlog(){
-    yield takeEvery(REQUEST_UPDATE_BLOG.request(), updateBlogAsync)
+    yield takeLatest(REQUEST_UPDATE_BLOG.request(), updateBlogAsync)
 }
 
 //删除blog
@@ -285,7 +285,7 @@ function* deleteBlogAsync(action){
      }
 } 
 export function* watchDeleteBlog(){
-    yield takeEvery(REQUEST_DELETE_BLOG.request(), deleteBlogAsync)
+    yield takeLatest(REQUEST_DELETE_BLOG.request(), deleteBlogAsync)
 }
 
 //获取blog
@@ -304,5 +304,5 @@ function* getBlogAsync(action){
      }
 } 
 export function* watchGetBlog(){
-    yield takeEvery(REQUEST_GET_BLOG.request(), getBlogAsync)
+    yield takeLatest(REQUEST_GET_BLOG.request(), getBlogAsync)
 }

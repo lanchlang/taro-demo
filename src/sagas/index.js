@@ -9,6 +9,15 @@ import {watchFavorBlog,watchUnfavorBlog,
         watchCreateBlog,watchUpdateBlog,
         watchDeleteBlog,watchGetBlog} from './blog'
 
+import {watchUsernameExist,watchPhoneExist,watchEmailExist,
+        watchLoginWithUsernameAndPassword,watchLoginWithEmailAndPassword,
+        watchLoginWithPhoneAndPassword,watchLoginWithPhoneAndCaptcha,
+        watchRegisterWithEmail,watchRegisterWithPhone,
+        watchResetPasswordThroughEmail,watchResetPasswordThroughPhone,
+        watchResetPassword,watchProvideCaptcha,watchVerifyCaptcha,
+        watchSendCaptchaToPhone,watchVerifyPhoneCaptcha,
+        watchSync
+       } from './user'
   
 
 export default function* rootSaga() {
@@ -33,5 +42,22 @@ export default function* rootSaga() {
       watchDeleteBlog(),
       watchGetBlog(),
       //user    
+      watchUsernameExist(),
+      watchPhoneExist(),
+      watchEmailExist(),
+      watchLoginWithUsernameAndPassword(),
+      watchLoginWithEmailAndPassword(),
+      watchLoginWithPhoneAndPassword(),
+      watchLoginWithPhoneAndCaptcha(),
+      watchRegisterWithEmail(),
+      watchRegisterWithPhone(),
+      watchResetPasswordThroughEmail(),
+      watchResetPasswordThroughPhone(),
+      watchResetPassword(),
+      watchProvideCaptcha(), 
+      watchVerifyCaptcha(),
+      watchSendCaptchaToPhone(),
+      watchVerifyPhoneCaptcha(),
+      watchSync(),
     ])
   }

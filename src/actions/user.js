@@ -7,6 +7,8 @@ import {
     REQUEST_LOGIN_WITH_EMAIL,
     REQUEST_LOGIN_WITH_PHONE,
     REQUEST_LOGIN_WITH_CAPTCHA,
+    REQUEST_REGISTER_WITH_EMAIL,
+    REQUEST_REGISTER_WITH_PHONE,
     REQUEST_RESET_PASSWORD_WITH_EMAIL,
     REQUEST_RESET_PASSWORD_WITH_PHONE,
     REQUEST_RESET_PASSWORD,
@@ -60,6 +62,16 @@ export const loginWithPhoneAndPasswordActionCreator=new ActionCreator(REQUEST_LO
  * @param {电话} phone {验证码} code 
  */
 export const loginWithPhoneAndCaptchaActionCreator=new ActionCreator(REQUEST_LOGIN_WITH_CAPTCHA)
+/**
+ * 使用邮箱注册
+ * @param {邮箱} email {用户名} username {密码} password 
+ */
+export const registerWithEmailActionCreator=new ActionCreator(REQUEST_REGISTER_WITH_EMAIL)
+/**
+ * 使用电话注册
+ * @param {电话} phone {用户名} username {密码} password 
+ */
+export const registerWithPhoneActionCreator=new ActionCreator(REQUEST_REGISTER_WITH_PHONE)
 
 /**
  * 请求使用邮箱重置密码

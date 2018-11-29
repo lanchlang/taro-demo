@@ -1,4 +1,4 @@
-import { put, takeEvery,call } from 'redux-saga/effects'
+import { put, call,takeLatest } from 'redux-saga/effects'
 import {
     REQUEST_COMMENTS_BY_BLOG,
     REQUEST_CREATE_COMMENT,
@@ -31,7 +31,7 @@ function* createCommentAsync(action){
 } 
 
 export function* watchCreateComment(){
-    yield takeEvery(REQUEST_CREATE_COMMENT.request(), createCommentAsync)
+    yield takeLatest(REQUEST_CREATE_COMMENT.request(), createCommentAsync)
 }
 //删除comment
 function* deleteCommentAsync(action){
@@ -49,7 +49,7 @@ function* deleteCommentAsync(action){
     }
 } 
 export function* watchDeleteComment(){
-    yield takeEvery(REQUEST_DELETE_COMMENT.request(), deleteCommentAsync)
+    yield takeLatest(REQUEST_DELETE_COMMENT.request(), deleteCommentAsync)
 }
 
 //通过post获取comments
@@ -68,5 +68,5 @@ function* getCommentsByPostAsync(action){
      }
 } 
 export function* watchGetCommentsByPost(){
-    yield takeEvery(REQUEST_COMMENTS_BY_BLOG.request(), getCommentsByPostAsync)
+    yield takeLatest(REQUEST_COMMENTS_BY_BLOG.request(), getCommentsByPostAsync)
 }
