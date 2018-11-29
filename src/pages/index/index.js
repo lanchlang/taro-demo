@@ -19,7 +19,7 @@ import './index.css'
   },
   asyncAdd () {
     //dispatch(asyncAdd())
-    dispatch(requestCommentsByPostActionCreator.createRequestAction({postId:1,lastId:11}))
+    dispatch(requestCommentsByPostActionCreator.createRequestAction({postId:1,lastId:0}))
   }
 }))
 class Index extends Component {

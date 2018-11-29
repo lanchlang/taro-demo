@@ -27,7 +27,7 @@ export function createComment(comment){
 //通过post获取comments
 export function getCommentsByPost(postId,lastId){
     return Taro.request({
-        url: generateUrl("/posts/"+postId+"/comments"),
+        url: generateUrl("/blogs/"+postId+"/comments"),
         data: {
             last_id: lastId,
         },

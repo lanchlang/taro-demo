@@ -61,7 +61,7 @@ function* getCommentsByPostAsync(action){
         if(response.statusCode>=300){
             yield put(requestCommentsByPostActionCreator.createFailAction(response.data))
         }else{
-            yield put(requestCommentsByPostActionCreator.createSuccessAction(response.data))
+            yield put(requestCommentsByPostActionCreator.createSuccessAction({id:postId,comments:response.data}))
         }
      }catch(error) {
          yield put(requestCommentsByPostActionCreator.createFailAction({"error":"发生网络错误"}))
