@@ -287,7 +287,7 @@ function* provideCaptchaAsync(action){
     let params=action.payload
     try{
         yield put(provideCaptchaActionCreator.createPendingAction())
-        const response=yield call(provideCaptcha,...params)
+        const response=yield call(provideCaptcha,params)
         if(response.statusCode>=300){
             yield put(provideCaptchaActionCreator.createFailAction(response.data))
         }else{

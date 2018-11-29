@@ -233,10 +233,10 @@ export function* watchGetBlogsByIds(){
 
 //创建blog
 function* createBlogAsync(action){
-    let {blog}=action.payload
+    let params=action.payload
     try{
         yield put(createBlogActionCreator.createPendingAction())
-        const response=yield call(createBlog,blog)
+        const response=yield call(createBlog,params)
         if(response.statusCode>=300){
             yield put(createBlogActionCreator.createFailAction(response.data))
         }else{

@@ -5,6 +5,9 @@ class ActionCreator{
     constructor(request){
        this.request=request
     }
+    getStateRequest(){
+        return this.request
+    }
     createRequestAction(payload){
        return {
            type:this.request.request(),
