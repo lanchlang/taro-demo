@@ -108,7 +108,6 @@ export function listBlog(params){
         },
         header: {
             ...getJwtToken(),
-            'content-type': 'application/json',
         }
     })
 }

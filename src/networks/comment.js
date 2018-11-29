@@ -18,7 +18,8 @@ export function createComment(comment){
         url: generateUrl("/comments/"),
         data: {...comment},
         header: {
-            ...getJwtToken()
+            ...getJwtToken(),
+            'content-type': 'application/json',
         },
         method:"POST",
       })

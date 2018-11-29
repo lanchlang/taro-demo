@@ -52,7 +52,8 @@ export function loginWithEmailAndPassword(email,password){
         },
         method:"POST",
         header: {
-            ...getJwtToken()
+            ...getJwtToken(),
+            'content-type': 'application/json',
         }
     })
 }
@@ -67,7 +68,8 @@ export function loginWithPhoneAndPassword(phone,password){
         },
         method:"POST",
         header: {
-            ...getJwtToken()
+            ...getJwtToken(),
+            'content-type': 'application/json',
         }
     })
 }
@@ -81,7 +83,8 @@ export function loginWithUsernameAndPassword(username,password){
         },
         method:"POST",
         header: {
-            ...getJwtToken()
+            ...getJwtToken(),
+            'content-type': 'application/json',
         }
     })
 }
@@ -96,6 +99,140 @@ export function loginWithPhoneAndCaptcha(phone,code){
         method:"POST",
         header: {
             ...getJwtToken()
+        }
+    })
+}
+//Email注册
+export function registerWithEmail(username,email,password){
+    return Taro.request({
+        url: generateUrl("/register/email"),
+        data: {
+            "username": username,
+            "email":email,
+            "password":password,
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}
+//Phone注册
+export function registerWithPhone(username,phone,password){
+    return Taro.request({
+        url: generateUrl("/register/phone"),
+        data: {
+            "username": username,
+            "phone":phone,
+            "password":password,
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}
+//通过邮箱重置密码
+export function resetPasswordThroughEmail(email){
+    return Taro.request({
+        url: generateUrl("/forget/password/email"),
+        data: {
+            "email": email,
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}
+//通过电话重置密码
+export function resetPasswordThroughPhone(phone){
+    return Taro.request({
+        url: generateUrl("/forget/password/phone"),
+        data: {
+            "phone": phone,
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}
+//重置密码
+export function resetPassword(password,token){
+    return Taro.request({
+        url: generateUrl("/forget/password/phone"),
+        data: {
+            "password": password,
+            "token":token,
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}
+//提供图形验证码
+export function provideCaptcha(){
+    return Taro.request({
+        url: generateUrl("/forget/password/phone"),
+        data: {
+
+        },
+        method:"GET",
+        header: {
+            ...getJwtToken(),
+        }
+    })
+}
+
+//检测图形验证码
+export function verifyCaptcha(id,value){
+    return Taro.request({
+        url: generateUrl("/verify_captcha"),
+        data: {
+            "id": id,
+            "value":value,
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}
+
+//发送手机验证码
+export function sendCaptchaToPhone(phone){
+    return Taro.request({
+        url: generateUrl("/send_captcha_to_phone"),
+        data: {
+            "phone": phone,
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
+        }
+    })
+}
+//检测电话验证码
+export function verifyPhoneCaptcha(phone,captcha){
+    return Taro.request({
+        url: generateUrl("/verify_phone_captcha"),
+        data: {
+            "phone": phone,
+            "captcha":captcha
+        },
+        method:"POST",
+        header: {
+            ...getJwtToken(),
+            'content-type': 'application/json',
         }
     })
 }
