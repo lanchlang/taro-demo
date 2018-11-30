@@ -36,6 +36,12 @@ class ActionCreator{
             payload:payload
         }
     }
+    createResetAction(payload){
+        return {
+            type:this.request.reset(),
+            payload:payload
+        }
+    }
 }
 
 export default ActionCreator;

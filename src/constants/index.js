@@ -9,6 +9,7 @@ export class Request{
        this.cancelRequestDescription=requestDescription+"_CANCEL"
        this.successRequestDescription=requestDescription+"_SUCCESS"
        this.failRequestDescription=requestDescription+"_FAIL"
+       this.resetRequestDescription=requestDescription+"_RESET"
     }
     request(){
         return this.requestDescription;
@@ -24,6 +25,9 @@ export class Request{
     }
     fail(){
         return this.failRequestDescription
+    }
+    reset(){
+        return this.resetRequestDescription
     }
 }
 
