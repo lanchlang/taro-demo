@@ -23,7 +23,7 @@ function commentMap (currentState = INITIAL_COMMENT_MAP_STATE, action) {
             newState[comment["id"]]=comment
             return newState
         }(currentState)
-      case REQUEST_DELETE_COMMENT.request():
+      case REQUEST_DELETE_COMMENT.success():
         return function(state){
             let {id} = action.payload
             let newState={...state}
@@ -57,14 +57,21 @@ function commentsByPostMap (currentState = INITIAL_COMMENTS_BY_POST_MAP_STATE, a
             newState[blog_id]=commentIds.concat([id])
             return newState
           }(currentState)
-
+     case REQUEST_DELETE_COMMENT.success():
+          return function(state){
+              let {postId,id} = action.payload
+              let newState={...state}
+              //删除ID
+              newState[postId]=newState[postId].filter((commentId)=>{return commentId!=id})
+              return newState
+          }(currentState)
       default:
          return currentState
     }
 }
 
-const comment=combineReducers({
+const commentInfo=combineReducers({
     commentMap,
     commentsByPostMap
 })
-export default comment
+export default commentInfo

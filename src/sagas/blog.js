@@ -90,7 +90,7 @@ function* searchBlogAsync(action){
         if(response.statusCode>=300){
             yield put(searchBlogActionCreator.createFailAction(response.data))
         }else{
-            yield put(searchBlogActionCreator.createSuccessAction(response.data))
+            yield put(searchBlogActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(searchBlogActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -109,7 +109,7 @@ function* getBlogsByDateAsync(action){
         if(response.statusCode>=300){
             yield put(getBlogsByDateActionCreator.createFailAction(response.data))
         }else{
-            yield put(getBlogsByDateActionCreator.createSuccessAction(response.data))
+            yield put(getBlogsByDateActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(getBlogsByDateActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -127,7 +127,7 @@ function* getBlogsByPopularityAsync(action){
         if(response.statusCode>=300){
             yield put(getBlogsByPopularityActionCreator.createFailAction(response.data))
         }else{
-            yield put(getBlogsByPopularityActionCreator.createSuccessAction(response.data))
+            yield put(getBlogsByPopularityActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(getBlogsByPopularityActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -146,7 +146,7 @@ function* getBlogsByFavoriteAsync(action){
         if(response.statusCode>=300){
             yield put(getBlogsByFavoriteActionCreator.createFailAction(response.data))
         }else{
-            yield put(getBlogsByFavoriteActionCreator.createSuccessAction(response.data))
+            yield put(getBlogsByFavoriteActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(getBlogsByFavoriteActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -165,7 +165,7 @@ function* getBlogsByTagAsync(action){
         if(response.statusCode>=300){
             yield put(getBlogsByTagActionCreator.createFailAction(response.data))
         }else{
-            yield put(getBlogsByTagActionCreator.createSuccessAction(response.data))
+            yield put(getBlogsByTagActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(getBlogsByTagActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -184,7 +184,7 @@ function* getBlogsByCategoryAsync(action){
         if(response.statusCode>=300){
             yield put(getBlogsByCategoryActionCreator.createFailAction(response.data))
         }else{
-            yield put(getBlogsByCategoryActionCreator.createSuccessAction(response.data))
+            yield put(getBlogsByCategoryActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(getBlogsByCategoryActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -196,14 +196,14 @@ export function* watchGetBlogsByCategory(){
 
 //根据user获取blogs
 function* getBlogsByUserAsync(action){
-    let {userId,lastId}=action.payload
+    let params=action.payload
     try{
         yield put(getBlogsByUserActionCreator.createPendingAction())
-        const response=yield call(getBlogsByUser,userId,lastId)
+        const response=yield call(getBlogsByUser,params)
         if(response.statusCode>=300){
             yield put(getBlogsByUserActionCreator.createFailAction(response.data))
         }else{
-            yield put(getBlogsByUserActionCreator.createSuccessAction(response.data))
+            yield put(getBlogsByUserActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(getBlogsByUserActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -221,7 +221,7 @@ function* getBlogsByIdsAsync(action){
         if(response.statusCode>=300){
             yield put(getBlogsByIdsActionCreator.createFailAction(response.data))
         }else{
-            yield put(getBlogsByIdsActionCreator.createSuccessAction(response.data))
+            yield put(getBlogsByIdsActionCreator.createSuccessAction({...action.payload,blogs:response.data}))
         }
      }catch(error) {
          yield put(getBlogsByIdsActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -278,7 +278,7 @@ function* deleteBlogAsync(action){
         if(response.statusCode>=300){
             yield put(deleteBlogActionCreator.createFailAction(response.data))
         }else{
-            yield put(deleteBlogActionCreator.createSuccessAction(response.data))
+            yield put(deleteBlogActionCreator.createSuccessAction({...action.payload,result:response.data}))
         }
      }catch(error) {
          yield put(deleteBlogActionCreator.createFailAction({"error":"发生网络错误"}))

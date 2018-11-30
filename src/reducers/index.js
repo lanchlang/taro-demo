@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux'
 import counter from './counter'
-import comment from './comment'
+import commentInfo from './comment'
+import blogInfo from './blog'
+import userInfo from './user'
 
 export default combineReducers({
   counter,
-  comment,
+  commentInfo,
+  blogInfo,
+  userInfo
 })

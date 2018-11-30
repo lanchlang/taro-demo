@@ -9,7 +9,7 @@ export  function generateTakeLatestSaga(actionCreator,networkMethod){
             if(response.statusCode>=300){
                 yield put(actionCreator.createFailAction(response.data))
             }else{
-                yield put(actionCreator.createSuccessAction(response.data))
+                yield put(actionCreator.createSuccessAction({...action.payload,result:response.data}))
             }
          }catch(error) {
              yield put(actionCreator.createFailAction({"error":"发生网络错误"}))
@@ -28,7 +28,7 @@ export  function generateTakeEverySaga(actionCreator,networkMethod){
             if(response.statusCode>=300){
                 yield put(actionCreator.createFailAction(response.data))
             }else{
-                yield put(actionCreator.createSuccessAction(response.data))
+                yield put(actionCreator.createSuccessAction({...action.payload,result:response.data}))
             }
          }catch(error) {
              yield put(actionCreator.createFailAction({"error":"发生网络错误"}))
@@ -47,7 +47,7 @@ export  function generateThrottleSaga(actionCreator,networkMethod,duration){
             if(response.statusCode>=300){
                 yield put(actionCreator.createFailAction(response.data))
             }else{
-                yield put(actionCreator.createSuccessAction(response.data))
+                yield put(actionCreator.createSuccessAction({...action.payload,result:response.data}))
             }
          }catch(error) {
              yield put(actionCreator.createFailAction({"error":"发生网络错误"}))

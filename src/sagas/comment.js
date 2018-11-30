@@ -42,7 +42,7 @@ function* deleteCommentAsync(action){
        if(response.statusCode>=300){
         yield put(deleteCommentActionCreator.createFailAction(response.data))
        }else{
-        yield put(deleteCommentActionCreator.createSuccessAction(response.data))
+        yield put(deleteCommentActionCreator.createSuccessAction({...action.payload,...response.data}))
        }
     }catch(error) {
         yield put(deleteCommentActionCreator.createFailAction({"error":"发生网络错误"}))

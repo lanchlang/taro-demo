@@ -113,11 +113,12 @@ export function listBlog(params){
 }
 
 //通过user获取blogs
-export function getBlogsByUser(userId,lastId){
+export function getBlogsByUser(params){
+    let {id,last_id}=params
     return Taro.request({
-        url: generateUrl("/users/"+userId+"/blogs"),
+        url: generateUrl("/users/"+id+"/blogs"),
         data: {
-            last_id: lastId,
+            last_id: last_id,
         },
         method:"GET",
         header: {

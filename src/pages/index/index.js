@@ -11,11 +11,11 @@ import './index.css'
   counter
 }), (dispatch) => ({
   add () {
-    dispatch(add())
+    //dispatch(add())
   },
   dec () {
     //dispatch(minus())
-    dispatch(deleteCommentActionCreator.createRequestAction({id:1}))
+    dispatch(deleteCommentActionCreator.createRequestAction({id:1,postId:1}))
   },
   asyncAdd () {
     //dispatch(asyncAdd())

@@ -122,7 +122,7 @@ function* loginWithUsernameAndPasswordAsync(action){
         if(response.statusCode>=300){
             yield put(loginWithUsernameAndPasswordActionCreator.createFailAction(response.data))
         }else{
-            yield put(loginWithUsernameAndPasswordActionCreator.createSuccessAction(response.data))
+            yield put(loginWithUsernameAndPasswordActionCreator.createSuccessAction({user:response.data,header:response.header}))
         }
      }catch(error) {
          yield put(loginWithUsernameAndPasswordActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -141,7 +141,7 @@ function* loginWithEmailAndPasswordAsync(action){
         if(response.statusCode>=300){
             yield put(loginWithEmailAndPasswordActionCreator.createFailAction(response.data))
         }else{
-            yield put(loginWithEmailAndPasswordActionCreator.createSuccessAction(response.data))
+            yield put(loginWithEmailAndPasswordActionCreator.createSuccessAction({user:response.data,header:response.header}))
         }
      }catch(error) {
          yield put(loginWithEmailAndPasswordActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -160,7 +160,7 @@ function* loginWithPhoneAndPasswordAsync(action){
         if(response.statusCode>=300){
             yield put(loginWithPhoneAndPasswordActionCreator.createFailAction(response.data))
         }else{
-            yield put(loginWithPhoneAndPasswordActionCreator.createSuccessAction(response.data))
+            yield put(loginWithPhoneAndPasswordActionCreator.createSuccessAction({user:response.data,header:response.header}))
         }
      }catch(error) {
          yield put(loginWithPhoneAndPasswordActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -179,7 +179,7 @@ function* loginWithPhoneAndCaptchaAsync(action){
         if(response.statusCode>=300){
             yield put(loginWithPhoneAndCaptchaActionCreator.createFailAction(response.data))
         }else{
-            yield put(loginWithPhoneAndCaptchaActionCreator.createSuccessAction(response.data))
+            yield put(loginWithPhoneAndCaptchaActionCreator.createSuccessAction({user:response.data,header:response.header}))
         }
      }catch(error) {
          yield put(loginWithPhoneAndCaptchaActionCreator.createFailAction({"error":"发生网络错误"}))
@@ -217,7 +217,7 @@ function* registerWithPhoneAsync(action){
         if(response.statusCode>=300){
             yield put(registerWithPhoneActionCreator.createFailAction(response.data))
         }else{
-            yield put(registerWithPhoneActionCreator.createSuccessAction(response.data))
+            yield put(registerWithPhoneActionCreator.createSuccessAction({user:response.data.user,header:response.header}))
         }
      }catch(error) {
          yield put(registerWithPhoneActionCreator.createFailAction({"error":"发生网络错误"}))
